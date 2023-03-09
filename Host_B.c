@@ -26,11 +26,9 @@ void B_input(struct pkt packet)
 {
   /* TODO */
   int checksum = packet.acknum + packet.seqnum + Check_Sum_B(packet.payload);
-  //printf("B_input() Checksum: %d, Calculated checksum: %d\n\n", packet.checksum, checksum);
 
   if (checksum != packet.checksum)
   {
-    //printf( "Corrupted packet!!\n\n");
     packet.acknum = 0;
     tolayer3(1, packet);
   }
